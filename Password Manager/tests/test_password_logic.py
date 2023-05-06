@@ -67,7 +67,7 @@ def test_add_password_missing_data():
     passwords = {"passwords": []}
     with pytest.raises(TypeError):
         add_password(passwords, name='test', 
-                     url='https://www.test.com', username='test@example.com')
+                    url='https://www.test.com', username='test@example.com')
 
 
 def test_load_passwords_file_not_found():
