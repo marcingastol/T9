@@ -1,6 +1,7 @@
 import os
 from app.password_logic import load_passwords, save_passwords, add_password
 
+
 def main():
     file_path = os.path.join(os.path.dirname(__file__), '..', 'passwords.json')
     passwords = load_passwords(file_path)
@@ -15,6 +16,7 @@ def main():
     updated_passwords = add_password(passwords, **new_entry)
     save_passwords(file_path, updated_passwords)
     print("New entry added successfully!")
+
 
 if __name__ == '__main__':
     main()

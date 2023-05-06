@@ -2,11 +2,13 @@ import os
 import pytest
 from app.password_logic import load_passwords, save_passwords, add_password
 
+
 def test_load_passwords():
     file_path = os.path.join(os.path.dirname(__file__), '..', 'passwords.json')
     passwords = load_passwords(file_path)
     assert 'passwords' in passwords
     assert isinstance(passwords['passwords'], list)
+
 
 def test_save_passwords():
     file_path = os.path.join(os.path.dirname(__file__), '..', 'passwords.json')
@@ -14,6 +16,7 @@ def test_save_passwords():
     save_passwords(file_path, test_passwords)
     saved_passwords = load_passwords(file_path)
     assert test_passwords == saved_passwords
+
 
 def test_add_password():
     passwords = {"passwords": []}
@@ -28,6 +31,7 @@ def test_add_password():
         'username': username,
         'password': password
     }
+
 
 def test_add_multiple_passwords():
     passwords = {"passwords": []}
@@ -58,10 +62,12 @@ def test_add_multiple_passwords():
 
     assert passwords['passwords'] == entries
 
+
 def test_add_password_missing_data():
     passwords = {"passwords": []}
     with pytest.raises(TypeError):
         add_password(passwords, name='test', url='https://www.test.com', username='test@example.com')
+
 
 def test_load_passwords_file_not_found():
     file_path = 'non_existent_file.json'
